@@ -1,13 +1,16 @@
-<?php defined( 'ABSPATH' ) or die( 'No drect script access' );
+<?php
 /**
- * Plugin Name: Plugin Boilerplate
- * Plugin URI: https://github.com/warpaintmedia/wordpress-plugin
- * Description: A brief description of the plugin.
- * Version: 1.0.0
- * Author: WARPAINT Media
- * Author URI: http://warpaintmedia.ca
- * License: MIT License
+ * @package Plugin Boilerplate
  */
+/*
+Plugin Name: Plugin Boilerplate
+Plugin URI: https://github.com/WARPAINTMedia/wordpress-plugin
+Description: A brief description of the plugin.
+Version: 1.0.0
+Author: WARPAINT Media
+Author URI: http://warpaintmedia.ca
+License: MIT License
+*/
 
 define("PLUGIN_TITLE", "My Awesome Plugin");
 define("PLUGIN_TABLE", "myplugin");
@@ -16,6 +19,9 @@ define("PLUGIN_OPTIONS", "myplugin-options");
 define("PLUGIN_ROUTE", "myplugin-admin-page");
 define("PLUGIN_AJAX", "myplugin_ajax");
 define("PLUGIN_CSS", "plugin-boilerplate.css");
+
+// no direct access allowed
+defined( 'ABSPATH' ) or die( 'No drect script access' );
 
 function plugin_install() {
   global $wpdb;
