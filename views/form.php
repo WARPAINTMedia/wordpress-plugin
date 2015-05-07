@@ -1,4 +1,4 @@
-<div class="wrap product-form">
+<div class="wrap entry-form">
   <h1><?php echo $plugin_title ?></h1>
   <p>Use this manager to update and create or delete entries.</p>
   <?php if(!empty($message)): ?>

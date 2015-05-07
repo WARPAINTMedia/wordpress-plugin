@@ -17,34 +17,34 @@
 }
 
 .sortable-dragging {
- opacity: .25;
- -webkit-transition: -webkit-transform 0.2s ease-out;
- -moz-transition: -moz-transform 0.2s ease-out;
- -webkit-transform: scale(0.8);
- -moz-transform: scale(0.8);
+  opacity: .25;
+  -webkit-transition: -webkit-transform 0.2s ease-out;
+  -moz-transition: -moz-transform 0.2s ease-out;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
 }
 
 .sortable-over {
- opacity: .25;
+  opacity: .25;
 }
 
-.product-form input[type="file" i]::-webkit-file-upload-button {
+.entry-form input[type="file" i]::-webkit-file-upload-button {
   color: rgba(0, 0, 0, 0);
   background: none;
   border: none;
 }
 
-.product-form .pageAssignment {
+.entry-form .pageAssignment {
   width: 260px;
   min-height: 200px;
 }
 
-.product-form .pageAssignment {
+.entry-form .pageAssignment {
   width: 260px;
   min-height: 200px;
 }
 
-.product-form .form-table label {
+.entry-form .form-table label {
   display:block;
   width:50%;
   float:left;
