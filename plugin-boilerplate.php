@@ -136,7 +136,7 @@ function handleUploads($files) {
       $movefile[$key] = wp_handle_upload($files[$key], $upload_overrides);
       if (!$movefile || isset($movefile['error'])) {
         $message = "{$key} could not be uploaded. Please try again.";
-        echo '<pre>' . print_r($movefile, true) . '</pre>';
+        error_log(print_r($movefile, true));
       }
     }
   }
@@ -148,6 +148,9 @@ add_action( 'wp_ajax_'.PLUGIN_AJAX, 'plugin_ajax_handler' );
  * $.post("<?php echo $site_url; ?>/wp-admin/admin-ajax.php", {order: getOrder(), action: 'PLUGIN_AJAX'});
  */
 function plugin_ajax_handler() {
+  if (!isset($_POST['order'])) {
+    die('No Order Set.');
+  }
   // Handle request then generate response
   global $wpdb;
   foreach ($_POST['order'] as $order => $id) {
@@ -175,6 +178,7 @@ function pluginAdminOptions() {
     wp_die(__('You do not have sufficient permissions to access this page.'));
   }
 
+  // message setup for errors and success strings
   $message = "";
 
   // prepare files that are being uploaded
@@ -198,6 +202,7 @@ function pluginAdminOptions() {
     }
   }
 
+  // default data to be sent to the templates
   $data = array(
     'site_url' => site_url(),
     'route_url' => site_url() . '/wp-admin/admin.php?page='.PLUGIN_ROUTE.'&',
