@@ -81,7 +81,7 @@ function updateEntryByID($post, $image) {
   // Replace a row in a table if it exists or insert a new row in a table if the row did not already exist
   $status = $wpdb->replace($wpdb->prefix.PLUGIN_TABLE, $data);
   if ($status == false) {
-    return $wpdb->show_errors();
+    return $wpdb->print_error();
   }
   return $status;
 }
@@ -161,12 +161,12 @@ function plugin_ajax_handler() {
   global $wpdb;
   foreach ($_POST['order'] as $order => $id) {
     $id = str_replace('item-', '', $id);
-    $updateQry = sprintf("UPDATE `%s` SET `order` = %d WHERE id = %d", $wpdb->prefix.PLUGIN_TABLE, $order, $id);
+    $updateQry = sprintf("UPDATE `%s` SET %s.order = %d WHERE %s.id = %d", $wpdb->prefix.PLUGIN_TABLE, $wpdb->prefix.PLUGIN_TABLE, $order, $wpdb->prefix.PLUGIN_TABLE, $id);
     $updateRes = $wpdb->query($updateQry);
     if (!$updateRes) {
       wp_send_json(array(
         'status' => false,
-        'message' => $wpdb->show_errors()
+        'message' => $wpdb->print_error()
         ));
       die();
     }
@@ -236,7 +236,7 @@ function pluginAdminOptions() {
     if ($updateRes) {
       $message = "The entry was successfully deleted.";
     } else {
-      $message = "There was an error deleting the entry or the entry has already been deleted. Please try again. ". $wpdb->show_errors();
+      $message = "There was an error deleting the entry or the entry has already been deleted. Please try again. ". $wpdb->print_error();
     }
     $data['message'] = $message;
     echo render_file('views/delete.php', $data);
