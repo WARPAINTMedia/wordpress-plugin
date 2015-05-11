@@ -45,6 +45,7 @@
         </tr>
         <tr>
           <input type="hidden" name="id" value="<?php echo $request ?>">
+          <input type="hidden" name="order" value="<?php echo $order ?>">
           <td><input class="button button-primary" type="submit" value="Save"></td>
           <td><a class="button" href="<?php echo $route_url; ?>">Cancel</a></td>
         </tr>

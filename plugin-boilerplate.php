@@ -77,6 +77,8 @@ function updateEntryByID($post, $image) {
   // update order when create method
   if ($post['id'] == null) {
     $data['order'] = returnEntryCount() + 1;
+  } else {
+    $data['order'] = $post['order'];
   }
   // Replace a row in a table if it exists or insert a new row in a table if the row did not already exist
   $status = $wpdb->replace($wpdb->prefix.PLUGIN_TABLE, $data);
